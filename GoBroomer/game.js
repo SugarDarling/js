@@ -1,8 +1,8 @@
 ﻿var config = {
     type: Phaser.AUTO,
     // pixel size * tile map size * zoom 
-    width: 32 * 15,
-    height: 32 * 15,
+    width: 32 * 18.7,
+    height: 32 * 18.8,
     physics: {
         default: 'arcade',
         arcade: {
@@ -16,7 +16,12 @@
     },
     backgroundColor: '#000000',
     pixelArt: true,
-    scene: [preload, world, map2, map3, map4]//load你的scene
+    scene: [preload, mainPage, storyline01, storyline02, RuleOfTheGame, instructions1, instructions2, world, map2, map3, map4, Congratulations]//load你的scene
+    // gameover
 };
 
 var game = new Phaser.Game(config);
+
+window.item1= 0;
+window.item2= 0;
+window.item3= 0;

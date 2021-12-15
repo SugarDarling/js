@@ -32,6 +32,11 @@ class world extends Phaser.Scene {
   create() {
     console.log("*** world scene");
 
+    //background_sound
+    this.music = this.sound.add("BGM", {
+      loop: true,
+    }).setVolume(0.1);this.music.play();
+
     //Step 3 - Create the map from main
     let map = this.make.tilemap({key:'map1'}); 
 
@@ -140,6 +145,13 @@ class world extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.treesLayer); //跟138一样是障碍物，可能只是为了确认
     this.physics.add.collider(this.player, this.houseLayer);
+
+    //scoreText
+    this.item1Score = this.add.text(18, 19, window.item1 + ' / Items collected ', { 
+      fontSize: '15px', 
+      fill: '#000000', 
+      }).setScrollFactor(0);
+
   } 
   /////////////////// end of create //////////////////////////////
 
@@ -181,5 +193,19 @@ class world extends Phaser.Scene {
     console.log("map2 function");
     this.scene.start("map2");
   }
+
+   //collect item
+        // item 1 x3
+        collectitem(player,item1)
+        {
+        console.log("collectitem1");
+        item1.disableBody(true,true);
+        this.collectsound.play();
+
+        window.item1 = window.item1 + 1;
+        console.log("  / Items collected", window.item1);
+
+        this.item1Score.setText(  window.item1 + '  / Items collected ');
+        }
 
 } //////////// end of class world ////////////////////////

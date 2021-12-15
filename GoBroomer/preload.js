@@ -10,18 +10,16 @@ class preload extends Phaser.Scene {
   preload() {
 
     this.load.image("cover","assets/coverPage.png");
-    
+
+    //collect sound
+    this.load.audio("collect","assets/collect.WAV");
+
+    //background music
+    this.load.audio("BGM","assets/BGM.mp3");
   }
 
   create() {
     console.log("*** preload scene");
-
-    // Add any sound and music here
-    // ( 0 = mute to 1 is loudest )
-    //this.music = this.sound.add('bgMusic').setVolume(0.3) // 10% volume
-
-    //this.music.play()
-    //window.music = this.music
 
     // Add image and detect spacebar keypress
     this.add.image(0, 0, 'cover').setOrigin(0, 0);
@@ -33,10 +31,10 @@ class preload extends Phaser.Scene {
     spaceDown.on(
       "down",
       function () {
-        console.log("Jump to world scene");
+        console.log("Jump to mainPage scene");
 
         this.scene.start(
-          "world",
+          "mainPage",
           // Optional parameters
           {}
         );
